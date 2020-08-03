@@ -1,0 +1,37 @@
+.borderleft{
+    border: 1px solid #5867dd ;
+    text-align: right;
+    padding:0.2em 0.3em;
+    margin-top:0.2em;
+    margin-bottom:0.2em;
+    width: 80%;
+}
+.borderright{
+    border: 1px solid #5867dd ;
+    text-align: left;
+    padding:0.2em 0.3em;
+    margin-top:0.2em;
+    margin-bottom:0.2em;
+    width: 80%;
+}
+.text{
+    
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.m-content {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+.btn-success {
+    width: 65%;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-weight: bold;
+}
+
+.form-title {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    padding-top: 6px;
+}

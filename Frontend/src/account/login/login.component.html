@@ -1,0 +1,145 @@
+<!-- <div class="m-login__signin" [@routerTransition]>
+    <div class="m-login__head">
+        <h3 class="m-login__title">
+            {{l("LogIn")}}
+        </h3>
+    </div>
+    <form #loginForm="ngForm" class="m-login__form m-form login-form" method="post" novalidate (ngSubmit)="login()">
+
+        <div class="form-group m-form__group">
+            <input #userNameOrEmailAddressInput="ngModel" [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress" autoFocus class="form-control m-input" type="text" autocomplete="off" placeholder="{{l('UserNameOrEmail')}} *" name="userNameOrEmailAddress" required />
+            <validation-messages [formCtrl]="userNameOrEmailAddressInput"></validation-messages>
+        </div>
+
+        <div class="form-group m-form__group">
+            <input #passwordInput="ngModel" [(ngModel)]="loginService.authenticateModel.password" class="form-control m-input" type="password" autocomplete="off" placeholder="{{l('Password')}} *" name="password" required maxlength="32" />
+            <validation-messages [formCtrl]="passwordInput"></validation-messages>
+        </div>
+
+        <div class="row m-login__form-sub">
+            <div class="col m--align-left">
+                <label class="m-checkbox m-checkbox--primary">
+                    <input class="form-control" [(ngModel)]="loginService.rememberMe" type="checkbox" name="rememberMe" value="true" />{{l("RememberMe")}}
+                    <span></span>
+                </label>
+            </div>
+            <div class="col m--align-right">
+                <a routerLink="/account/forgot-password" id="forget-password" class="m-link forget-password">{{l("ForgotPassword")}}</a>
+            </div>
+        </div>
+
+        <div class="m-login__form-action">
+            <button type="submit" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--air" [disabled]="!loginForm.form.valid">{{l("LogIn")}}</button>
+        </div>
+    </form>
+
+    <div class="login-options" *ngIf="(multiTenancySideIsTeanant || !isMultiTenancyEnabled) && loginService.externalLoginProviders.length > 0">
+        <h4>{{l("LoginWith")}}</h4>
+        <ul class="social-icons">
+            <li *ngFor="let provider of loginService.externalLoginProviders">
+                <a class="social-login-icon social-icon-color {{provider.icon}}"
+                   (click)="externalLogin(provider)"
+                   title="{{provider.name}}"></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="m-stack__item m-stack__item--center">
+        <div class="m-login__account">
+            <span *ngIf="isSelfRegistrationAllowed">
+                <a routerLink="/account/register" id="register-btn" class="m-link m-link--primary m-login__account-link">{{l("CreateAnAccount")}}</a>
+                <span class="pipe-divider"> | </span>
+            </span>
+            <span *ngIf="!multiTenancySideIsTeanant && isTenantSelfRegistrationAllowed">
+                <a routerLink="/account/select-edition" id="register-btn" class="m-link m-link--primary m-login__account-link">{{l("NewTenant")}}</a>
+                <span class="pipe-divider"> | </span>
+            </span>
+            <a routerLink="/account/email-activation" id="email-activation-btn" class="m-link m-link--primary m-login__account-link">{{l("EmailActivation")}}</a>
+        </div>
+    </div>
+</div> -->
+<div class="container-fluid h-100 d-flex align-items-center justify-content-center">
+
+    <div class="content">
+
+        <div class="row h-100">
+
+            <div class="col-5 h-100">
+                <img src="../../assets/SE214.K22.PMCL/Backgroud_Login.png" class="h-100 w-100" alt="">
+            </div>
+
+            <div class="col-7 h-100">
+
+                <div class="row h-100 align-items-center">
+
+
+                    <form #loginForm="ngForm" (ngSubmit)="login()" class="col-7 ml-5">
+
+                        <div class="form-group mb-5">
+                            <h1>Log In</h1>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="">Username *</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                                </div>
+                                <input name="userNameOrEmailAddress" required type="text" class="form-control"
+                                    aria-label="Username" aria-describedby="basic-addon1"
+                                    [ngModelOptions]="{standalone: true}" placeholder="Enter your username"
+                                    #userNameOrEmailAddressInput="ngModel"
+                                    [(ngModel)]="loginService.authenticateModel.userNameOrEmailAddress">
+                            </div>
+                            <validation-messages [formCtrl]="userNameOrEmailAddressInput"></validation-messages>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="">Password *</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">
+                                        <i class="fa fa-key"></i>
+                                    </span>
+                                </div>
+                                <input name="password" required maxlength="32" type="password" class="form-control"
+                                    aria-label="Username" aria-describedby="basic-addon1" #passwordInput="ngModel"
+                                    [(ngModel)]="loginService.authenticateModel.password"
+                                    [ngModelOptions]="{standalone: true}" placeholder="Enter your password">
+                            </div>
+                            <validation-messages [formCtrl]="passwordInput"></validation-messages>
+
+                        </div>
+
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" id="remember">
+                            <label class="form-check-label ml-2" for="remember"
+                                [ngModelOptions]="{standalone: true}" [(ngModel)]=" loginService.rememberMe"
+                                value="true">Remember</label>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn-custom" [disabled]="loading || !loginForm.form.valid">
+                                <ng-template [ngIf]="loading">
+                                    <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+                                    <span class="sr-only">Loading...</span>
+                                </ng-template>
+                                Sign in
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

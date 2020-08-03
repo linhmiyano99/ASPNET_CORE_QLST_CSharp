@@ -1,0 +1,39 @@
+<div [@routerTransition]>
+    <div class="m-content">
+        <div class="m-portlet m-portlet__header m-portlet-mobile">
+            <div class="m-portlet__nav">
+                <ul>
+                    <li>
+                        <a routerLink="/app/admin/schedule-car-add">
+                            <i class="flaticon-add"></i>
+                            Lưu
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-subheader pd-0">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto col-xs-6">
+                    <span class="m-section__sub m-section__sub--separator">
+                        {{l("Trang chủ")}}
+                    </span>
+                    <span class="m-section__sub m-section__sub--separator active">
+                        <a routerLink="/app/admin/schedule-cars">{{l("Quản lý lịch trình")}} {{currentUserName}}</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet-mobile">
+            <div class="m-portlet__body">
+                <form #filterForm="ngForm">
+
+                    <button type="submit" hidden [disabled]="!filterForm.form.valid" ></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

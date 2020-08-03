@@ -1,0 +1,205 @@
+<div [@routerTransition]>
+    <div class="m-content">
+        <div class="m-portlet m-portlet__header m-portlet-mobile">
+            <div class="m-portlet__nav">
+                <ul>
+                    <li *ngIf="isGranted('Pages.Group9.BaoTri.Add')"><a
+                            routerLink="/app/admin/maintain-cars-notify-add"><i class="flaticon-add"></i>
+                            Thêm mới</a></li>
+                    <li *ngIf="isGranted('Pages.Group9.BaoTri.Update')"><a [class.disabled]="!curMaBaoTri"
+                            [routerLink]="['/app/admin/maintain-cars-notify-edit', {id : curMaBaoTri}]"><i
+                                class="flaticon-edit"></i> Chỉnh
+                            sửa</a></li>
+
+                    <li *ngIf="isGranted('Pages.Group9.BaoTri.Delete')" style="cursor: pointer;"><a
+                            [class.disabled]="!curMaBaoTri" (click)=" delete()"><i class="fa fa-trash" disabled></i>
+                            Xóa</a>
+                    </li>
+                    <li *ngIf="isGranted('Pages.Group9.BaoTri.Add')"><a
+                            routerLink="/app/admin/maintain-cars-notify-propose"><i class="fa fa-send"></i>
+                            Đề xuất</a></li>
+
+                    <li style="cursor: pointer;"><a (click)="search()"><i class="flaticon-search"></i> Tìm kiếm</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-subheader pd-0">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto col-xs-6">
+                    <span class="m-section__sub m-section__sub--separator">
+                        {{l("Trang chủ")}}
+                    </span>
+                    <span class="m-section__sub m-section__sub--separator active">
+                        <a routerLink="/app/admin/maintain-cars-notify">{{l("Thông báo bảo trì")}}
+                            {{currentUserName}}</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet-mobile">
+            <div class="m-portlet__body">
+                <form #filterForm="ngForm" (submit)="search()">
+                    <div class="row">
+
+
+                        <div class="col-md-3">
+                            <label for="maXe">Mã thông báo bảo trì</label>
+                            <div class="form-group">
+
+                                <select class="form-control" id="maBaotri" name="maBaotri" [(ngModel)]="selectedLevel2"
+                                    (change)="selectOption($event.target.value)">
+                                    <option value>Tất cả</option>
+                                    <option *ngFor="let item of baotri_list_id" value="{{item.ma}}">{{item.ma}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="maXe">Mã Xe</label>
+                            <div class="form-group">
+
+                                <select class="form-control" id="maXe" name="maXe" [(ngModel)]="selectedLevel"
+                                    (change)="selectOption($event.target.value)">
+                                    <option value>Tất cả</option>
+                                    <option *ngFor="let item of xe_list" value="{{item.ma}}">{{item.ma}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="maXe">Trạng thái</label>
+                            <div class="form-group">
+                                <select class="form-control" id="trangthai" name="trangthai"
+                                    [(ngModel)]="selectedLevel3" (change)="selectOption($event.target.value)">
+                                    <option *ngFor="let item of trangthai_list" value="{{item.value}}">{{item.content}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="maXe">Tình trạng</label>
+                            <div class="form-group">
+                                <select class="form-control" id="tinhtrang" name="tinhtrang"
+                                    [(ngModel)]="selectedLevel4" (change)="selectOption($event.target.value)">
+                                    <option *ngFor="let item of tinhtrang_list" value="{{item.value}}">{{item.content}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" hidden [disabled]="!filterForm.form.valid" (keyup.enter)="search()"></button>
+                </form>
+                <div class="row align-items-center">
+
+                    <!--<Primeng-TurboTable-Start>-->
+                    <div class="primeng-datatable-container">
+
+                        <p-table #dataTable [value]="primengTableHelper.records"
+                            [paginator]="primengTableHelper.totalRecordsCount === 0 ? false : true"
+                            [rows]="primengTableHelper.defaultRecordsCountPerPage"
+                            [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage"
+                            totalRecords="totalRecords" pageLinks="3">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>
+                                        Checkbox
+                                    </th>
+                                    <th>
+                                        STT
+                                    </th>
+                                    <th>
+                                        Mã Bảo Trì
+                                    </th>
+                                    <th>
+                                        Mã xe
+                                    </th>
+                                    <th>
+                                        Ngày Bảo Trì
+                                    </th>
+                                    <th>
+                                        Ngày Xuất Xưởng
+                                    </th>
+                                    <th>
+                                        Thành Tiền
+                                    </th>
+                                    <th>
+                                        Người Tạo
+                                    </th>
+
+                                    <th>
+                                        Ngày tạo
+                                    </th>
+                                    <th>
+                                        Người thực hiện
+                                    </th>
+                                    <th>
+                                        Trạng Thái
+                                    </th>
+                                </tr>
+                            </ng-template>
+
+                            <ng-template pTemplate="body" let-record="$implicit">
+                                <tr>
+                                    <td>
+                                        <label class="m-radio" for="Theme_Default-{{record.ma}}">
+                                            <input id="Theme_Default-{{record.ma}}" name="Theme"
+                                                [(ngModel)]="curMaBaoTri" value="{{record.ma}}" type="radio">
+                                            <span></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <span>{{record['no']}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.ma}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.baoTri_MaXe}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.baoTri_NgayBaotri | date: 'shortDate'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.baoTri_NgayXuatXuong | date: 'shortDate'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.baoTri_ThanhTien}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.baoTri_NguoiTao }}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.baoTri_NgayTao | date: 'shortDate'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.baoTri_NguoiTao}}</span>
+                                    </td>
+
+                                    <td>
+                                        <span *ngIf="record.baoTri_TinhTrangBaoTri=='C'"  >
+                                          Chờ duyệt đề xuất                  
+                                        </span>
+                                        
+                                        <span *ngIf="record.baoTri_TinhTrangBaoTri=='D'"  >
+                                          Đang đi bảo trì      
+                                        </span>
+                                      </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <div class="primeng-no-data" *ngIf="primengTableHelper.totalRecordsCount == 0">
+                            {{l('NoData')}}
+                        </div>
+                    </div>
+                    <!--<Primeng-TurboTable-End>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

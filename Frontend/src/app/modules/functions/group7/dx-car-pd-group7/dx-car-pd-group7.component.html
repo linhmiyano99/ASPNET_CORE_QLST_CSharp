@@ -1,0 +1,124 @@
+<div [@routerTransition]>
+  <form class="m-content" #roleForm="ngForm" novalidate (ngSubmit)="approvePhieuDeXuat()" autocomplete="off">
+    <div class="m-portlet m-portlet__header m-portlet-mobile">
+      <div class="m-portlet__nav">
+        <ul>
+
+          <li>
+            <a class="pointer" *ngIf="banggia.ma" (click)="approvePhieuDeXuat()"><i class="fa fa-check"></i> Duyệt</a>
+          </li>
+          <li>
+            <a class="pointer"  (click)="showBasicDialog()"><i class="fa fa-ban"></i> Từ chối</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-subheader">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto col-xs-6">
+          <span class="m-section__sub m-section__sub--separator">
+            Trang chủ
+          </span>
+          <span class="m-section__sub m-section__sub--separator active">
+            <a routerLink="/app/admin/dx-cars">Quản lý đề xuất xe</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="m-portlet m-portlet-mobile">
+      <div class="m-portlet__body">
+        <div class="m-form m-form--label-align-right">
+          <form class="ng-tns-c10-9 ng-pristine ng-valid ng-touched" autocomplete="off" novalidate="">
+
+            <div class="form-body">
+              <div class="row" style="padding:1em;line-height:3">
+                <div class="mr-auto col-xl-3">
+                  <div class="spacing">
+                    <label>{{l("Tên xe:")}} </label>
+                    <a>{{dexuatInput.deXuat_TenXe}} </a>
+                  </div>
+                </div>
+                <div class="mr-auto col-xl-3">
+                  <div class="spacing">
+                    <label>{{l("Năm sản xuất:")}} </label>
+                    <a>{{dexuatInput.loaiXe_NamSX}} </a>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="padding:1em;line-height:3">
+                <div class="mr-auto col-xl-3">
+                  <div class="spacing">
+                    <label>{{l("Hãng sản xuất:")}} </label>
+                    <a>{{dexuatInput.loaiXe_Hang}} </a>
+                  </div>
+                </div>
+                <div class="mr-auto col-xl-3">
+                  <div class="spacing">
+                    <label>{{l("Số lượng:")}} </label>
+                    <a>{{dexuatInput.deXuat_SoLuong}} </a>
+                  </div>
+                </div>
+              </div>
+              <div class="row" style="padding:1em;line-height:3">
+                <div class="mr-auto col-xl-3">
+                  <div class="spacing">
+                    <label>{{l("Màu:")}} </label>
+                    <a>{{dexuatInput.deXuat_Mau}} </a>
+                  </div>
+                </div>
+              </div>
+              <p-scrollPanel [style]="{width: '100%', height: '200px'}" *ngIf="primengTableHelper.records" style="padding:1em;line-height:3">
+
+                <div class="row" style="padding:1em;line-height:3" (click)="banggia.ma = record.ma" [ngStyle]="{'background-color': (record.ma%2==0)? '#EBEBEB':'#FFFFFF'}" *ngFor='let record of primengTableHelper.records'>
+                  <div class="mr-auto col-xl-6" >
+                    <label class="spacing" for="opt_{{banggia.ma}}"> 
+                      <p-radioButton name="group1" [value]="record.ma" [label]="record['banggia']"
+                        [(ngModel)]="banggia.ma" id="opt_{{banggia.ma}}">
+                      </p-radioButton>
+                      <a>{{record.deXuatBangGia_Gia|number: '1.2-2' }} đồng </a>
+                    </label>
+                  </div>
+                  <div class="mr-auto col-xl-6">
+                    <div class="spacing"><label>{{record['chuthau']}} </label>
+                      <a>{{record.deXuatBangGia_ChuThau}} </a>
+                    </div>
+                  </div>
+                </div>
+
+              </p-scrollPanel>
+            </div>
+            <form>
+              <div class="form-group row" style="padding:1em;line-height:3">
+                <label class="col-sm-2 " for="lydo">{{l("Lý do đề xuất")}} </label>
+                <div class="col-sm-10">
+                  <textarea pInputTextarea readOnly="readOnly" rows="2" cols="40" id="lydo"
+                    [(ngModel)]="dexuatInput.deXuat_LyDo" class="form-control" type="text" name="lydo">
+                  </textarea>
+                </div>
+              </div>
+              <div class="form-group row" style="padding:1em;line-height:3">
+                <label class="col-sm-2 " for="mucdich">{{l("Mục đích")}} </label>
+                <div class="col-sm-10">
+                  <textarea pInputTextarea readOnly="readOnly" rows="2" cols="40" id="mucdich"
+                    [(ngModel)]="dexuatInput.deXuat_MucDich" class="form-control" type="text" name="mucdich">
+                  </textarea>
+                </div>
+              </div>
+            </form>
+            <p-dialog header="Lý do từ chối" [(visible)]="displayBasic" resizable="false">
+
+              <textarea pInputTextarea rows="3" cols="50" id="tuchoi" style="margin: auto; padding: 10px"
+                [(ngModel)]="lydotuchoi" class="form-control" type="text" name="tuchoi" required maxlength="64">
+                    </textarea>
+
+              <p-footer>
+                <button type="button" class="btn btn-metal" *ngIf="lydotuchoi" (click)="rejectPhieuDeXuat()">{{l("Xác nhận")}}</button>
+                <button type="button" class="btn btn-metal" (click)="displayBasic=false">{{l("Hủy")}}</button>
+              </p-footer>
+            </p-dialog>
+          </form>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

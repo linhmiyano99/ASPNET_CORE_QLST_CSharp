@@ -1,0 +1,15 @@
+.Group10 .input-width{
+    width: 100%;
+}
+.Group10 .span-dmgl{
+    width: 35%;
+    background-color: #FFFFFF;
+}
+.Group10 .span-gia{
+    background-color: #FFFFFF;
+}
+.Group10 label {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+

@@ -1,0 +1,12 @@
+.dashboard {
+    background-color: #fff;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}

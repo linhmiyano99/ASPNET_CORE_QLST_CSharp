@@ -1,0 +1,229 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\modules\\group1\\Group1.AbpZeroTemplate.Application\\Group1.AbpZeroTemplate.Application.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj": {
+      "version": "5.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj",
+        "projectName": "GSoft.AbpZeroTemplate.Application.Shared",
+        "projectPath": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj",
+        "packagesPath": "C:\\Users\\17520\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Application.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\17520\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {
+              "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Core.Shared\\GSoft.AbpZeroTemplate.Core.Shared.csproj": {
+                "projectPath": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Core.Shared\\GSoft.AbpZeroTemplate.Core.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Abp.Web.Common": {
+              "target": "Package",
+              "version": "[3.7.2, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "System.ComponentModel.Annotations": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Core.Shared\\GSoft.AbpZeroTemplate.Core.Shared.csproj": {
+      "version": "5.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Core.Shared\\GSoft.AbpZeroTemplate.Core.Shared.csproj",
+        "projectName": "GSoft.AbpZeroTemplate.Core.Shared",
+        "projectPath": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Core.Shared\\GSoft.AbpZeroTemplate.Core.Shared.csproj",
+        "packagesPath": "C:\\Users\\17520\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Core.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\17520\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netstandard2.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netstandard2.0": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netstandard2.0": {
+          "dependencies": {
+            "Abp": {
+              "target": "Package",
+              "version": "[3.7.2, )"
+            },
+            "Abp.Zero.Common": {
+              "target": "Package",
+              "version": "[3.7.2, )"
+            },
+            "Abp.ZeroCore": {
+              "target": "Package",
+              "version": "[3.7.2, )"
+            },
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.35, )"
+            },
+            "NETStandard.Library": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.0.3, )",
+              "autoReferenced": true
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\modules\\group1\\Group1.AbpZeroTemplate.Application\\Group1.AbpZeroTemplate.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\modules\\group1\\Group1.AbpZeroTemplate.Application\\Group1.AbpZeroTemplate.Application.csproj",
+        "projectName": "Group1.AbpZeroTemplate.Application",
+        "projectPath": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\modules\\group1\\Group1.AbpZeroTemplate.Application\\Group1.AbpZeroTemplate.Application.csproj",
+        "packagesPath": "C:\\Users\\17520\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\modules\\group1\\Group1.AbpZeroTemplate.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "crossTargeting": true,
+        "configFilePaths": [
+          "C:\\Users\\17520\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net461",
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj": {
+                "projectPath": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj"
+              }
+            }
+          },
+          "net461": {
+            "projectReferences": {
+              "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj": {
+                "projectPath": "C:\\Users\\17520\\Documents\\GitHub\\ASPNET_CORE_QLST\\Backend\\src\\GSoft.AbpZeroTemplate.Application.Shared\\GSoft.AbpZeroTemplate.Application.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "portable-net45+win8+wp8+wpa81",
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        },
+        "net461": {
+          "imports": [
+            "portable-net45+win8+wp8+wpa81"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,133 @@
+<div [@routerTransition]>
+    <div class="m-content">
+        <div class="m-portlet m-portlet__header m-portlet-mobile">
+            <div class="m-portlet__nav">
+                <ul>
+
+                    <li>
+                        <span>
+                            <span (click)="propose()" [class.disabled]="!curMaBaoTri">
+                                <i class="fa fa-propose"></i> Đề xuất
+                            </span>
+                        </span>
+                    </li>
+
+                    <li>
+                        <span class="m-section__sub m-section__sub--separator active">
+                            <a routerLink="/app/admin/maintain-cars-notify">Hủy</a>
+                          </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-subheader pd-0">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto col-xs-6">
+                    <span class="m-section__sub m-section__sub--separator">
+                        {{l("Trang chủ")}}
+                    </span>
+                    <span class="m-section__sub m-section__sub--separator active">
+                        <a routerLink="/app/admin/maintain-cars-notify">{{l("Thông báo bảo trì")}} {{currentUserName}}</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet-mobile">
+            <div class="m-portlet__body">
+                <form #filterForm="ngForm" (submit)="searchQuaHan()">
+                    <div class="row">
+
+                        
+                        <div class="col-md-3">
+                            <label for="maXe">Đề xuất</label>
+                            <div class="form-group">
+
+                                <select class="form-control" id="maBaotri" name="maBaotri" [(ngModel)]="selectedLevel2" (change)="selectOption2($event.target.value)">
+                                    <option *ngFor="let item of kyhan_list" value="{{item.value}}">{{item.content}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    
+
+
+                    </div>
+                   
+                    <button type="submit" hidden [disabled]="!filterForm.form.valid" (keyup.enter)="searchQuaHan()"></button>
+                </form>
+                <div class="row align-items-center">
+                    
+                    <!--<Primeng-TurboTable-Start>-->
+                    <div class="primeng-datatable-container">
+                        
+                        <p-table #dataTable [value]="primengTableHelper.records"
+                            [paginator]="primengTableHelper.totalRecordsCount === 0 ? false : true"
+                            [rows]="primengTableHelper.defaultRecordsCountPerPage"
+                            [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage"
+                            totalRecords="totalRecords" pageLinks="3">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>
+                                        Checkbox
+                                    </th>
+                                    <th>
+                                        STT
+                                    </th>
+                                    <th>
+                                        Mã xe
+                                    </th>
+                                    <th>
+                                        Tên xe
+                                    </th>
+                                    <th>
+                                        Biển số xe
+                                    </th>
+                                    <th>
+                                       Giá
+                                    </th>
+                     
+                                </tr>
+                            </ng-template>
+
+                            <ng-template pTemplate="body" let-record="$implicit">
+                                <tr>
+                                    <td>
+                                        <label class="m-radio" for="Theme_Default-{{record.ma}}">
+                                            <input id="Theme_Default-{{record.ma}}" name="Theme"
+                                                [(ngModel)]="curMaBaoTri" value="{{record.ma}}" type="radio">
+                                            <span></span>
+                                        </label>
+                                        
+                                    </td>
+                                    <td>
+                                        <span>{{record['no']}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.ma}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.xe_Ten}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.xe_BienSo }}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.xe_Gia}}</span>
+                                    </td>
+                
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <div class="primeng-no-data" *ngIf="primengTableHelper.totalRecordsCount == 0">
+                            {{l('NoData')}}
+                        </div>
+                    </div>
+                    <!--<Primeng-TurboTable-End>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

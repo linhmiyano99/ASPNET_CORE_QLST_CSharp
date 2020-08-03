@@ -1,0 +1,207 @@
+<div [@routerTransition]>
+    <div class="m-content">
+        <div class="m-portlet m-portlet__header m-portlet-mobile">
+            <div class="m-portlet__nav">
+                <ul>
+
+                <li *ngIf="isGranted('Pages.Group9.HoatDongTaiXe.Add')"><a routerLink="/app/admin/driver-schedule-add"><i
+                            class="flaticon-add"></i>
+                        Thêm mới</a></li>
+                <li *ngIf="isGranted('Pages.Group9.HoatDongTaiXe.Update')" ><a [class.disabled]="!currentId"
+                        [routerLink]="['/app/admin/driver-schedule-edit', {id : currentId}]"><i class="flaticon-edit"></i> Chỉnh
+                        sửa</a></li>
+                
+                <li *ngIf="isGranted('Pages.Group9.HoatDongTaiXe.Delete')" style="cursor: pointer;" ><a [class.disabled]="!currentId"
+                        (click)=" delete()"><i class="fa fa-trash" disabled></i> Xóa</a>
+                </li>
+                <li style="cursor: pointer;"><a (click)="search()"><i class="flaticon-search"></i> Tìm kiếm</a></li>
+                   
+                </ul>
+            </div>
+        </div>
+        <div class="m-subheader pd-0">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto col-xs-6">
+                    <span class="m-section__sub m-section__sub--separator">
+                        {{l("Trang chủ")}}
+                    </span>
+                    <span class="m-section__sub m-section__sub--separator active">
+                        <a routerLink="/app/admin/driver-schedule">{{l("Quản lý hoạt động tài xế")}}
+                            {{currentUserName}}</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet-mobile">
+            <div class="m-portlet__body">
+                <form #filterForm="ngForm" (submit)="search()">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <label for="maTaiXe"> Mã tài xế</label>
+                            <div class="form-group">
+                            <select class="form-control" id="maTaiXe" name="maTaiXe" [(ngModel)]="DRIVER_ID"  (change)="selectOption($event.target.value)"
+                                (change)='onOptionsSelected($event)'>
+                                <option value>Tất cả</option>
+                                <option *ngFor="let item of taixe_list" value="{{item.ma}}">{{item.ma}}
+                                </option>
+                            </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <label for="maTaiXe">Mã Lịch Trình</label>
+                            <div class="form-group">
+                                <select class="form-control" id="maLichTrinh" name="maTaiXe" [(ngModel)]="SCHEDULE_ID"  (change)="selectOption($event.target.value)" >
+                                    <option value>Tất cả</option>
+                                    <option *ngFor="let item of lichtrinh_list" value="{{item.ma}}">{{item.ma}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xl-3">
+                            <div class="form-group">
+                                <label class="ng-tns-c10-9" for="ngayBatDau">Ngày Bắt Đầu </label>
+                                <div class="input-group">
+                                    <input class="form-control ng-pristine ng-valid ng-touched text-uppercase" 
+                                    id="ngayBatDau" name="ngayBatDau"
+                                    type="date" ng-reflect-name="ngayBatDau" 
+                                    [(ngModel)]="START_DATE" require>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <span style="margin-left:50px">DRIVER_ID: {{DRIVER_ID||'none'}}</span> -->
+                        <div class="col-xl-3">
+                            <div class="form-group">
+                                <label class="ng-tns-c10-9" for="ngayKetThuc">Ngày Kết Thúc </label>
+                                <div class="input-group">
+                                    <input class="form-control ng-pristine ng-valid ng-touched text-uppercase" 
+                                    id="ngayKetThuc" name="ngayKetThuc"
+                                    type="date" ng-reflect-name="ngayKetThuc" 
+                                    [(ngModel)]="END_DATE" require>
+                        
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <button type="submit" hidden [disabled]="!filterForm.form.valid" (keyup.enter)="search()"></button>
+                </form>
+                <div class="row align-items-center">
+
+                    <!--<Primeng-TurboTable-Start>-->
+                    <div class="primeng-datatable-container">
+
+                        <p-table #dataTable [value]="primengTableHelper.records"
+                            [paginator]="primengTableHelper.totalRecordsCount === 0 ? false : true"
+                            [rows]="primengTableHelper.defaultRecordsCountPerPage"
+                            [rowsPerPageOptions]="primengTableHelper.predefinedRecordsCountPerPage"
+                            totalRecords="totalRecords" pageLinks="3">
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th>
+                                        Checkbox
+                                    </th>
+                                    <th>
+                                        Số Thứ Tự
+                                    </th>
+                                    <th>
+                                        Mã Hoạt Động
+                                    </th>
+                                    <th>
+                                        Mã Tài Xế
+                                    </th>
+                                    <th>
+                                        Mã Lịch Trình
+                                    </th>
+                                    <th>
+                                        Từ Ngày
+                                    </th>
+                                    <th>
+                                        Đến Ngày
+                                    </th>
+                                    <th>
+                                       Số Km Thực Tế
+                                    </th>
+                                    <th>
+                                       Số Km Dự Tính
+                                    </th>
+                                    <th>
+                                        Nhiên liệu tiêu thụ (lít)
+                                    </th>
+
+                                    <th>
+                                        Trạng thái
+                                    </th>
+
+                                </tr>
+                            </ng-template>
+
+                            <ng-template pTemplate="body" let-record="$implicit">
+                                <tr>
+                                    <td>
+                                        <label class="m-radio" for="Theme_Default-{{record.ma}}">
+                                            <input id="Theme_Default-{{record.ma}}" name="Theme"
+                                                [(ngModel)]="currentId" value="{{record.ma}}" type="radio">
+                                            <span></span>
+                                        </label>
+                                    </td>
+                                    <td>
+                                        <span>{{record['no']}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.hoatDongTaiXe_Ma  }}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.hoatDongTaiXe_MaTaiXe}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.hoatDongTaiXe_MaLichTrinh}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.hoatDongTaiXe_NgayBatDau | date :'dd-MM-yyyy'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.hoatDongTaiXe_NgayKetThuc | date :'dd-MM-yyyy'}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.hoatDongTaiXe_KmThucTe}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.hoatDongTaiXe_KmUocTinh}}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{record.hoatDongTaiXe_NhienLieu }}</span>
+                                    </td>
+                                    
+                                    <td>
+                                        <span *ngIf="record.hoatDongTaiXe_TrangThai=='N'"  >
+                                          Chờ duyệt                 
+                                        </span>
+                                        
+                                        <span *ngIf="record.hoatDongTaiXe_TrangThai=='A'"  >
+                                          Đã duyệt    
+                                        </span>
+                                      </td>
+                                   
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                        <div class="primeng-no-data" *ngIf="primengTableHelper.totalRecordsCount == 0">
+                            {{l('NoData')}}
+                        </div>
+                    </div>
+                    <!--<Primeng-TurboTable-End>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

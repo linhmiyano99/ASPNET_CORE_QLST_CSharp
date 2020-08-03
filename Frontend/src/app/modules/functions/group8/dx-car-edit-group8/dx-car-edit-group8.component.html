@@ -1,0 +1,117 @@
+<div [@routerTransition]>
+    <form class="m-content" #roleForm="ngForm" novalidate (ngSubmit)="save()" autocomplete="off">
+        <div class="m-portlet m-portlet__header m-portlet-mobile">
+            <div class="m-portlet__nav">
+                <ul>
+                    <li [attr.disabled]="editPageState == 'view'">
+                        <a (click)="save()"><i class="fa fa-save"></i> Lưu</a>
+                    </li>
+                    <li>
+                        <a><i class="fa fa-check"></i> Duyệt</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-subheader">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto col-xs-6">
+                    <span class="m-section__sub m-section__sub--separator">
+            Trang chủ
+          </span>
+                    <span class="m-section__sub m-section__sub--separator active">
+            <a routerLink="/app/admin/dx-cars">Quản lý đề xuất xe</a>
+          </span>
+                </div>
+            </div>
+        </div>
+        <div class="m-portlet m-portlet-mobile">
+            <div class="m-portlet__body">
+                <!-- <form #filterForm="ngForm"> -->
+                <form #filterForm="ngForm" autocomplete="off" novalidate="" [formGroup]="dx_control">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="deXuat_TenXe">Tên Xe</label>
+                            <div class="form-group">
+                                <input class="form-control" id="deXuat_TenXe" name="deXuat_TenXe" [(ngModel)]="dxInput.deXuat_TenXe" type="text" formControlName="deXuat_TenXe" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="loaiXe_NamSX">Năm Sản Xuất</label>
+                            <div class="form-group">
+                                <input class="form-control" id="loaiXe_NamSX" name="loaiXe_NamSX" [(ngModel)]="dxInput.loaiXe_NamSX" type="number" formControlName="loaiXe_NamSX" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="loaiXe_Hang">Hãng Sản Xuất</label>
+                            <div class="form-group">
+                                <input id="loaiXe_Hang" name="loaiXe_Hang" [(ngModel)]="dxInput.loaiXe_Hang" formControlName="loaiXe_Hang" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="deXuat_SoLuong">Số lượng</label>
+                            <div class="form-group">
+                                <input id="deXuat_SoLuong" name="deXuat_SoLuong" [(ngModel)]="dxInput.deXuat_SoLuong" formControlName="deXuat_SoLuong" class="form-control" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="deXuat_Mau">Màu</label>
+                            <div class="form-group">
+                                <input id="deXuat_Mau" name="deXuat_Mau" [(ngModel)]="dxInput.deXuat_Mau" formControlName="deXuat_Mau" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="deXuat_TrangThai">Trạng Thái</label>
+                            <div class="form-group">
+                                <input id="deXuat_TrangThai" name="deXuat_TrangThai" [(ngModel)]="dxInput.deXuat_TrangThai" formControlName="deXuat_TrangThai" class="form-control" type="text" value="Chờ Duyệt" [attr.disabled]="true" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngFor='let in of prices ;let i = index;'>
+                        <div class="col-md-6">
+                            <label for="">Bảng Giá {{i+1}}</label>
+                            <div class="form-group">
+                                <input id="bangGia_{{i}}" name="bangGia_{{i}}" formControlName="deXuatBangGia_Gia" class="form-control" [(ngModel)]="prices[i].deXuatBangGia_Gia" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="">Chủ Thầu {{i+1}}</label>
+                            <div class=" form-group">
+                                <input id="chuThau_{{i}}" name="chuThau_{{i}}" formControlName="deXuatBangGia_ChuThau" class="form-control" [(ngModel)]="prices[i].deXuatBangGia_ChuThau" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center mt-1 mb-3">
+                        <div class="col-12">
+                            <p-button icon="pi pi-plus" iconPos="right" (click)="addPrice()" label="Thêm bảng giá"></p-button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <label for="deXuat_LyDo">Lý do đề xuất</label>
+                            <div class="form-group">
+                                <input id="deXuat_LyDo" name="deXuat_LyDo" [(ngModel)]="dxInput.deXuat_LyDo" formControlName="deXuat_LyDo" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <label for="deXuat_MucDich">Mục đích sử dụng</label>
+                            <div class="form-group">
+                                <input id="deXuat_MucDich" name="deXuat_MucDich" [(ngModel)]="dxInput.deXuat_MucDich" formControlName="deXuat_MucDich" class="form-control" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-12">
+                            <button pButton type="button" label="Huỷ" class="ui-button-secondary mr-2"></button>
+                            <p-button (click)="save()" icon="pi pi-check" class="ml-2" label="Cập nhật"></p-button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </form>
+</div>

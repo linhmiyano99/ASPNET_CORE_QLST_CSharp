@@ -1,0 +1,56 @@
+<div class="container-fluid h-100">
+
+  <div class="row" style="margin-top: 15px;">
+
+    <div class="col-2 d-flex align-items-center justify-content-end">
+      <span style="font-size: 16px;">Ngày bắt đầu</span>
+    </div>
+
+    <div class="col-3 d-flex align-items-center">
+      <p-calendar [(ngModel)]="startDate" [showIcon]="true"></p-calendar>
+    </div>
+
+    <div [ngClass]="{'disabled' : startDate ? true: false}" class="col-2 d-flex align-items-center justify-content-end">
+      <span>Ngày kết thúc</span>
+    </div>
+
+    <div class="col-3 d-flex align-items-center">
+      <p-calendar [(ngModel)]="endDate" [showIcon]="true"></p-calendar>
+    </div>
+
+    <div class="col-2">
+      <button name="RefreshButton" class="btn btn-primary" (click)="getDashboardStatisticsData()"><i
+          class="la la-refresh"></i>Làm mới</button>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <ng-template [ngIf]="!loading" [ngIfElse]="load">
+
+      <div class="col-6">
+        <div class="dashboard">
+          <canvas id="chart1" width="700" height="400" #chart1></canvas>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="dashboard">
+          <canvas id="chart2" width="700" height="400" #chart2></canvas>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="dashboard">
+          <canvas id="chart3" width="700" height="400" #chart3></canvas>
+        </div>
+      </div>
+
+
+    </ng-template>
+    <ng-template #load>
+      <i class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i>
+      <span class="sr-only">Loading...</span>
+    </ng-template>
+  </div>
+</div>

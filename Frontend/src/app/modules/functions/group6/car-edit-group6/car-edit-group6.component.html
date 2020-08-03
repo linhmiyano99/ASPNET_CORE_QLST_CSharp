@@ -1,0 +1,43 @@
+<div [@routerTransition]>
+  <form class="m-content" #roleForm="ngForm" novalidate (ngSubmit)="save()" autocomplete="off">
+    <div class="m-portlet m-portlet__header m-portlet-mobile">
+      <div class="m-portlet__nav">
+        <ul>
+          <li [attr.disabled]="editPageState == 'view'">
+            <a (click)="save()"><i class="fa fa-save"></i> Lưu</a>
+          </li>
+          <li [attr.disabled]="editPageState != 'view' || carInput.authStatus=='A'">
+            <a (click)="approve()"><i class="fa fa-check"></i> Duyệt</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="m-subheader">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto col-xs-6">
+          <span class="m-section__sub m-section__sub--separator">
+            Trang chủ
+          </span>
+          <span class="m-section__sub m-section__sub--separator active">
+            <a routerLink="/app/admin/car">Quản lý xe</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="m-portlet m-portlet-mobile">
+      <div class="m-portlet__body">
+        <div class="m-form m-form--label-align-right">
+          <form class="ng-tns-c10-9 ng-pristine ng-valid ng-touched" autocomplete="off" novalidate="">
+            <div class="form-body">
+
+              <!-- #region -->
+              Code here
+              <!-- #endregion -->
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

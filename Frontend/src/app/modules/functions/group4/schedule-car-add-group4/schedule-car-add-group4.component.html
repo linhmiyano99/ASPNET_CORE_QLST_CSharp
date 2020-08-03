@@ -1,0 +1,88 @@
+<div [@routerTransition]>
+    <div class="m-content">
+        <div class="m-portlet m-portlet__header m-portlet-mobile">
+            <div class="m-portlet__nav">
+                <ul>
+                    <li>
+                        <a routerLink="/app/admin/schedule-car-add">
+                            <i class="flaticon-add"></i>
+                            Lưu
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="m-subheader pd-0">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto col-xs-6">
+                    <span class="m-section__sub m-section__sub--separator">
+                        {{l("Trang chủ")}}
+                    </span>
+                    <span class="m-section__sub m-section__sub--separator active">
+                        <a routerLink="/app/admin/schedule-cars">{{l("Quản lý lịch trình")}} {{currentUserName}}</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-content">
+        <div class="m-portlet m-portlet-mobile">
+            <div class="m-portlet__body">
+                <form #filterForm="ngForm">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="lichTrinh_DiemDi">Điểm đi</label>
+                            <div class="form-group">
+                                <input id="lichTrinh_DiemDi" class="form-control" type="text" name="lichTrinh_DiemDi"
+                                    maxlength="256">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="lichTrinh_DiemDen">Điểm đến</label>
+                            <div class="form-group">
+                                <input id="lichTrinh_DiemDen" class="form-control" type="text" name="lichTrinh_DiemDen"
+                                    maxlength="256">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="lichTrinh_TaiXe">Tài xế</label>
+                            <div class="form-group">
+                                <input id="lichTrinh_TaiXe" class="form-control" type="text" name="lichTrinh_TaiXe"
+                                    maxlength="256">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="lichTrinh_ThoiGianDi">Thời gian đi</label>
+                            <div class="form-group">
+                                <input id="lichTrinh_ThoiGianDi" class="form-control" type="text"
+                                    name="lichTrinh_ThoiGianDi" maxlength="11" pattern="^[0-9]+$">
+                                <!-- [(ngModel)]="carTypeInput.loaiXe_DinhMucNhienLieu"
+                                    #loaiXe_DinhMucNhienLieu="ngModel"
+                                <validation-messages [formCtrl]="loaiXe_DinhMucNhienLieu"
+                                    [errorDefs]="[{pattern: l('Vui lòng nhập số')}]"></validation-messages> -->
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="lichTrinh_ThoiGianDen">Thời gian đến</label>
+                            <div class="form-group">
+                                <input id="lichTrinh_ThoiGianDen" class="form-control" type="text"
+                                    name="lichTrinh_ThoiGianDen" maxlength="11" pattern="^[0-9]+$">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="lichTrinh_TrangThai">Trạng thái</label>
+                            <div class="form-group">
+                                <input id="lichTrinh_TrangThai" class="form-control" type="text"
+                                    name="lichTrinh_TrangThai" maxlength="11" pattern="^[0-9]+$">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" hidden [disabled]="!filterForm.form.valid"></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,139 @@
+
+<div class="m-content">
+    <div class="m-portlet m-portlet__header m-portlet-mobile">
+        <div class="m-portlet__nav">
+            <ul>
+                <li>
+                    <a (click)="update()"><i class="fa fa-save"></i> Lưu</a>
+                </li>
+                <li>
+                    <span (click)="approve()">
+                        <i class="fa fa-app"></i> Duyệt
+                    </span>
+                </li>
+              </ul>
+        </div>
+    </div>
+    <div class="m-subheader">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto col-xs-6">
+                <span class="m-section__sub m-section__sub--separator">
+          {{l("Trang chủ")}}
+        </span>
+                <span class="m-section__sub m-section__sub--separator active">
+          {{l("Quản lý thông báo bảo trì xe")}}
+        </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="m-portlet m-portlet-mobile">
+        <div class="m-portlet__body">
+            <div class="m-form m-form--label-align-right">
+                <form class="ng-tns-c10-9 ng-pristine ng-valid ng-touched" autocomplete="off" novalidate="">
+                    <div class="form-body">
+                        <div class="row m--margin-bottom-10">
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="ng-tns-c10-9" for="maXe">Mã xe *</label>
+                                    <div class="input-group">
+                                        <input class="form-control ng-pristine ng-valid ng-touched text-uppercase" 
+                                        id="maXe" name="maXe" readonly
+                                        type="text" ng-reflect-name="carNameText"               
+                                        [(ngModel)]="maxe" required>
+                                        
+                                      </div>
+                                </div>
+                            </div>
+     
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="ng-tns-c10-9" for="ModelCarName">Ngày bảo trì *</label>
+                                      <div class="input-group">
+                                        <input class="form-control ng-pristine ng-valid ng-touched text-capitalize" id="ngaybaotri" 
+                                        name="ngaybaotri" readonly type="text" ng-reflect-name="carTypeText" [(ngModel)]="ngaybaotri" required>
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="ng-tns-c10-9" for="CarManufacturer">Ngày xuất xưởng *</label>
+                                    <div class="input-group">
+                                        <input class="form-control ng-pristine ng-valid ng-touched text-capitalize" id="ngayxuatxuong" 
+                                        name="ngayxuatxuong" type="date" ng-reflect-name="ngayxuatxuong" [(ngModel)]="ngayxuatxuong" required>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="ng-tns-c10-9" for="ModelCarName">Nơi bảo trì *</label>
+                                    <div class="input-group">
+                                        <input class="form-control ng-pristine ng-valid ng-touched text-uppercase" 
+                                        id="noibaotri" name="noibaotri" 
+                                        type="text" ng-reflect-name="noibaotri"               
+                                        [(ngModel)]="noibaotri" required>
+                                        
+                                      </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="ng-tns-c10-9" for="CarManufacturer">Thành Tiền *</label>
+                                    <div class="input-group">
+                                        <div class="ui-inputgroup">
+                                            <input class="input-width" 
+                                              id="Gia" name="Gia" [(ngModel)]="thanhtien" (keypress)="numberOnly($event)" type="text" (keyup)="formatCurrency($event)" pKeyFilter="pint" [step]="1000"  required  pInputText
+                                            />
+                                              <span class="ui-inputgroup-addon span-gia" >VNĐ</span>
+                                          </div>
+                                      </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="ng-tns-c10-9" for="ModelCarName">Ghi chú</label>
+                                    <div class="input-group">
+                                        <input class="form-control ng-pristine ng-valid ng-touched text-uppercase" 
+                                        id="ModelCarName" name="ModelCarName" 
+                                        type="text" ng-reflect-name="carNameText"               
+                                        [(ngModel)]="ghichu" require>
+                                        
+                                      </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="ng-tns-c10-9" for="tinhtrangX">Tình trạng bảo trì</label>
+                                    <div class="input-group">
+                                        <input class="form-control ng-pristine ng-valid ng-touched carTypeText" readonly
+                                        id="tinhtrangX" name="tinhtrangX" 
+                                        type="text" ng-reflect-name="carNameText"               
+                                        [(ngModel)]="tinhtrangX" require>
+                                        
+                                      </div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <div class="form-group">
+                                    <label class="ng-tns-c10-9" for="trangthaiX">Trạng thái</label>
+                                    <div class="input-group">
+                                        <input class="form-control ng-pristine ng-valid ng-touched carTypeText" readonly
+                                        id="trangthaiX" name="trangthaiX" 
+                                        type="text" ng-reflect-name="carNameText"               
+                                        [(ngModel)]="trangthaiX" require>
+                                        
+                                      </div>
+                                </div>
+                            </div>
+                      
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

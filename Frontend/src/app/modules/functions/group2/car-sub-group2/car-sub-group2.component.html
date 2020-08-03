@@ -1,0 +1,75 @@
+<div [@routerTransition]>
+  <div class="m-content">
+
+      <div class="m-portlet m-portlet-mobile">
+          <div class="m-portlet__body">
+              <form #filterForm="ngForm" (submit)="thanhLy()">
+                  <div class="row">
+                      <div class="col-md-2">
+                          <div class="form-group">
+                              <button class="btn btn-success btn-search" type="submit">Lưu</button>
+                          </div>
+                      </div>
+                      <div class="col-md-10">
+                          <div class="form-group form-title">
+                              <label>THANH LÝ XE</label>
+                          </div>
+                      </div>
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label>Tên xe</label>
+                              <input class="form-control" name="Xe_Ten" [(ngModel)]="xeSearch.xe_Ten" disabled>
+                          </div>
+                          <div class="form-group">
+                              <label>Biển số xe</label>
+                              <input class="form-control" name="Xe_BienSo" [(ngModel)]="xeSearch.xe_BienSo" disabled>
+                          </div>
+                          <div class="form-group">
+                              <label>Tên hãng xe</label>
+                              <input class="form-control" name="Xe_TenHangXe" [(ngModel)]="xeSearch.loaiXe_Hang"
+                                  disabled>
+                          </div>
+                          <div class="form-group">
+                              <label>Năm sản xuất</label>
+                              <input class="form-control" name="Xe_NamSanXuat" [(ngModel)]="xeSearch.loaiXe_NamSX"
+                                  disabled>
+                          </div>
+                          <div class="form-group">
+                              <label>Màu xe</label>
+                              <input class="form-control" name="Xe_Mau" [(ngModel)]="xeSearch.xe_Mau" disabled>
+                          </div>
+                          <div class="form-group">
+                              <label>Giá</label>
+                              <input class="form-control" name="Xe_Gia" [(ngModel)]="xeSearch.xe_Gia" disabled>
+                          </div>
+                          <div class="form-group">
+                              <label>Định mức nhiên liệu (Lít/1000km)</label>
+                              <input class="form-control" name="loaiXe_DinhMucNhienLieu"
+                                  [(ngModel)]="xeSearch.loaiXe_DinhMucNhienLieu" disabled>
+                          </div>
+                      </div>
+
+                      <div class="col-md-6">
+                          <div class="form-group">
+                              <label>Lý do thanh lý</label>
+                              <textarea class="form-control" name ="thanhLy_LyDo" rows="6" [(ngModel)]="xeThanhLy.thanhLy_LyDo" ></textarea>
+                          </div>
+                          <div class="form-group">
+                              <label>Người mua</label>
+                              <input class="form-control" name="thanhLy_NguoiMua" [(ngModel)]="xeThanhLy.thanhLy_NguoiMua">
+                          </div>
+                          <div class="form-group">
+                              <label>Số tiền thanh lý</label>
+                              <input class="form-control" name="thanhLy_SoTien" [(ngModel)]="xeThanhLy.thanhLy_SoTien">
+                          </div>
+                      </div>
+
+                  </div>
+                  <button type="submit" hidden></button>
+              </form>
+              <div class="row align-items-center">
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

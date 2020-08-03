@@ -1,0 +1,150 @@
+<div [@routerTransition]>
+  <form class="m-content" #roleForm="ngForm" novalidate (ngSubmit)="luuconfirm()" autocomplete="off">
+    <div class="m-portlet m-portlet__header m-portlet-mobile">
+      <div class="m-portlet__nav">
+        <ul>
+          <li >
+            <a style="cursor: pointer;" (click)="huyconfirm()"><i class="fa fa-times"></i> Hủy</a>
+          </li>
+          <li >
+            <a style="cursor: pointer;" (click)="luuconfirm()"><i class="fa fa-check"></i> Lưu</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="m-subheader">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto col-xs-6">
+          <span style="cursor: pointer;" class="m-section__sub m-section__sub--separator">
+            Trang chủ
+          </span>
+          <span class="m-section__sub m-section__sub--separator active">
+            <a routerLink="/app/admin/car">Quản lý xe</a>
+          </span>
+          <span style="cursor: pointer;" class="m-section__sub m-section__sub--separator">
+            Thêm xe
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="Group10">
+    <div class="m-portlet m-portlet-mobile">
+      <div class="m-portlet__body">
+        <div class="m-form m-form--label-align-right">
+          <form class="ng-tns-c10-9 ng-pristine ng-valid ng-touched" autocomplete="off" novalidate="">
+            <div class="form-body"> 
+              <div class="form-group row">               
+              <div class="col-md-6">  
+                <div class="form-group">
+                  <div class="col-md-8">
+                  <label class="ng-tns-c10-9" for="Tenxe">Tên xe *</label>
+                    <div class="input-group">
+                      <input class="input-width" 
+                        id="Tenxe" name="Tenxe" [(ngModel)]="tenxe" type="text" maxlength="50" required [pKeyFilter]="noSpecial" pInputText/>
+                    </div>
+                  </div>   
+                </div>              
+                <div class="form-group">
+                  <div class="col-md-8">
+                  <label class="ng-tns-c10-9" for="Soluong">Số lượng *</label>
+                    <div class="input-group">
+                      <input class="input-width" 
+                        id="Soluong" name="Soluong" [(ngModel)]="soluong" type="number" (change)="resetbienso($event)" pKeyFilter="pint" [min] ="1" required pInputText/>
+                    </div>
+                  </div>   
+                </div>   
+                <div class="form-group">
+                  <div class="col-md-8">
+                  <label class="ng-tns-c10-9" for="Mauxe">Màu xe *</label>
+                    <div class="input-group">
+                      <input class="input-width" 
+                        id="Mauxe" name="Mauxe" [(ngModel)]="mauxe" type="text" required [pKeyFilter]="noSpecial" pInputText/>
+                    </div>
+                  </div>   
+                </div>   
+                <div class="form-group">
+                  <div class="col-md-8">
+                  <label class="ng-tns-c10-9" for="Gia">Giá *</label>
+                    <div class="ui-inputgroup">
+                      <input class="input-width" 
+                        id="Gia" name="Gia" [(ngModel)]="giaxe" type="text" (keyup)="formatCurrency($event)" pKeyFilter="pint" [step]="1000"  required  pInputText
+                      />
+                        <span class="ui-inputgroup-addon span-gia" >VNĐ</span>
+                    </div>
+                  </div>   
+                </div>   
+                <div class="form-group">
+                  <div class="col-md-8">
+                  <label class="ng-tns-c10-9" for="Biensoxe">Biển số xe</label>
+                    <div *ngIf="soluong!== 1; else elseBlock" class="input-group">
+                      <input class="input-width" [disabled]="true"
+                        id="Biensoxe" name="Biensoxe" [(ngModel)]="biensoxe" type="text" pInputText/>
+                    </div>
+                    <ng-template #elseBlock>
+                      <input class="input-width"
+                        id="Biensoxe" name="Biensoxe" [(ngModel)]="biensoxe" type="text" required pInputText/>
+                    </ng-template>
+                  </div>   
+                </div>   
+              </div>
+              <div class="col-md-6">   
+                
+                <div class="form-group">
+                  <div class="col-md-8">
+                    <label class="ng-tns-c10-9" >Tên loại xe *</label>   
+                    <p-dropdown [options]="listLoaiXe" [style]="{'width':'100%'}" name="dropdown" 
+                    [(ngModel)]="selectedLoaiXe" placeholder="Chọn loại xe" optionLabel="loaiXe_Ten" filter="true" 
+                    (onChange)="selectDropDown()" ></p-dropdown> 
+                      
+                    </div>
+                  </div>   
+ 
+                
+                <div class="form-group">
+                  <div class="col-md-8">
+                  <label class="ng-tns-c10-9" for="Namsanxuat">Năm sản xuất</label>
+                    <div class="input-group">
+                      <input class="input-width" readonly
+                        id="Namsanxuat" name="Namsanxuat" [(ngModel)]="namsanxuat" type="number"  pInputText/>
+                    </div>
+                  </div>   
+                </div>   
+                <div class="form-group">
+                  <div class="col-md-8">
+                  <label class="ng-tns-c10-9" for="Hang">Hãng</label>
+                    <div class="input-group">
+                      <input class="input-width" readonly
+                        id="Hang" name="Hang" [(ngModel)]="hangxe" type="text" pInputText/>
+                    </div>
+                  </div>   
+                </div>    
+                <div class="form-group">
+                  <div class="col-md-8">
+                  <label class="ng-tns-c10-9" for="Dinhmucnguyenlieu">Định mức nguyên liệu</label>
+                    <div class="ui-inputgroup">
+                      
+                      <input class="input-width" readonly
+                        id="Dinhmucnguyenlieu" name="Dinhmucnguyenlieu" [(ngModel)]="dinhmucnguyenlieu" type="number" pInputText/>
+                        <span class="ui-inputgroup-addon span-dmgl" >Lít/1000Km</span>
+                    </div>
+                  </div>   
+                </div>      
+              </div>
+            </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</div>
+<!--dialog xác nhận Thêm xe-->
+<p-dialog styleClass="dialog-width" header="THÔNG BÁO" [(visible)]="luudialog" [style]="{width: '1000vw'}" [baseZIndex]="10000">
+  Xác nhận thêm xe?
+<p-footer>
+  <button type="button" style="background-color: #5867DD; margin-right: 20px;" pButton (click)="luudialog=false;insert()" label="Thêm"></button>
+  <button type="button" pButton (click)="luudialog=false" label="Hủy" class="ui-button-secondary"></button>
+</p-footer>
+</p-dialog>

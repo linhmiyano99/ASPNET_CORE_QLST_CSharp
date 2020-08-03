@@ -1,0 +1,98 @@
+<div [@routerTransition]>
+    <form class="m-content" #roleForm="ngForm" novalidate (ngSubmit)="Save_Confirm()" autocomplete="off">
+        <div class="m-portlet m-portlet__header m-portlet-mobile">
+            <div class="m-portlet__nav">
+                <ul>
+                    <li>
+                        <a style="cursor: pointer;" (click)="Cancel_Confirm()"><i class="fa fa-times"></i> Hủy</a>
+                    </li>
+                    <li>
+                        <a style="cursor: pointer;" (click)="Save_Confirm()"><i class="fa fa-check"></i> Lưu</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="m-subheader">
+            <div class="d-flex align-items-center">
+                <div class="mr-auto col-xs-6">
+                    <span style="cursor: pointer;" class="m-section__sub m-section__sub--separator">
+                        Trang chủ
+                    </span>
+                    <span class="m-section__sub m-section__sub--separator active">
+                        <a routerLink="/app/admin/manufacturer-car">Quản lý Hãng Xe</a>
+                    </span>
+                    <span style="cursor: pointer;" class="m-section__sub m-section__sub--separator">
+                        Thêm Hãng Xe
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="Group10">
+            <div class="m-portlet m-portlet-mobile">
+                <div class="m-portlet__body">
+                    <div class="m-form m-form--label-align-right">
+                        <form class="ng-tns-c10-9 ng-pristine ng-valid ng-touched" autocomplete="off" novalidate="">
+                            <div class="form-body">
+                                <div class="form-group row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <label class="ng-tns-c10-9" for="maHangXe">Mã Hãng Xe *</label>
+                                                <div class="input-group">
+                                                    <input
+                                                        class="form-control ng-pristine ng-valid ng-touched text-uppercase"
+                                                        id="maHang" name="maHang" [(ngModel)]="Ma_Hang" type="text"
+                                                        maxlength="50" required pInputText />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            <div class="col-md-8">
+                                                <label class="ng-tns-c10-9">Tên Hãng Xe *</label>
+                                                <div class="input-group">
+                                                    <input
+                                                        class="form-control ng-pristine ng-valid ng-touched text-uppercase"
+                                                        id="tenHang" name="tenHang" [(ngModel)]="Ten_Hang" type="text"
+                                                        maxlength="50" required pInputText />
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--dialog xác nhận Lưu dữ liệu-->
+<p-dialog styleClass="dialog-width" header="Lưu" [(visible)]="Save_Dialog" [style]="{width: '2000vw'}"
+    [baseZIndex]="10000">
+    Lưu toàn bộ dữ liệu ?
+    <p-footer>
+        <button type="button" style="background-color: #5867DD; margin-right: 20px;" pButton
+            (click)="Save_Dialog=false;insert()" label="Yes"></button>
+        <button type="button" pButton (click)="Save_Dialog=false;" label="No" class="ui-button-secondary"></button>
+    </p-footer>
+
+
+</p-dialog>
+
+<!--dialog xác nhận Huy-->
+<p-dialog styleClass="dialog-width" header="Lưu" [(visible)]="Cancel_Dialog" [style]="{width: '2000vw'}"
+    [baseZIndex]="10000">
+    Bạn muốn huỷ bỏ tiến trình ?
+    <p-footer>
+        <button type="button" style="background-color: #5867DD; margin-right: 20px;" pButton
+            (click)="Cancel_Dialog=false;ClearAllInputValue()" label="Yes"></button>
+        <button type="button" pButton (click)="Cancel_Dialog=false" label="No" class="ui-button-secondary"></button>
+    </p-footer>
+</p-dialog>
